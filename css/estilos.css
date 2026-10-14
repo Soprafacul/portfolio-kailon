@@ -51,3 +51,6 @@ img,video,audio { max-width:100%; } img,video { height:auto; } audio { width:100
  .footer { display:flex; justify-content:space-between; gap:24px; }
 }
 @media (min-width:1024px) { nav { width:auto; order:0; } .wrap { width:calc(100% - 80px); } }
+
+/* CP3: tema persistente em todas as páginas. */
+:root[data-theme="dark"] { color-scheme:dark; --bg:#142019; --surface:#1d2c22; --ink:#f0f4e9; --muted:#b9c5b9; --line:#3d4d40; --accent:#c9f273; --soft:#293d2d; }
