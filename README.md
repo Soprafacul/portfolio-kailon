@@ -4,7 +4,7 @@ Curso: Análise e Desenvolvimento de Sistemas. Turma: não informada.
 Projeto acadêmico em HTML, CSS e JavaScript, desenvolvido com assistência de IA. Revise o código e personalize os textos antes da apresentação.
 
 ## Abrir
-Extraia o ZIP e abra `site/index.html`. Para testar a persistência entre páginas de forma consistente, use um servidor HTTP local, por exemplo a extensão Live Server do seu editor ou `python -m http.server 8000` dentro da pasta do site e acesse http://localhost:8000. O comportamento de localStorage em URLs file:// varia por navegador.
+Extraia o ZIP e abra `site/index.html`. Para testar a persistência entre páginas de forma consistente, use um servidor HTTP local, por exemplo a extensão Live Server do seu editor ou `python -m http.server 8000` dentro da pasta do site e acesse http://localhost:8000. Ao abrir por file://, o tema também acompanha os links entre as páginas pelo parâmetro tema, pois o armazenamento pode ser separado por arquivo. Um servidor HTTP ainda é recomendado para os testes de publicação.
 
 ## Conteúdo e requisitos
 - index.html: apresentação e avatar SVG com texto alternativo.
@@ -13,6 +13,7 @@ Extraia o ZIP e abra `site/index.html`. Para testar a persistência entre págin
 - multimidia.html: áudio WAV local com controls e iframe local funcional. Áudio sintetizado para demonstração, sem fala; não é depoimento pessoal.
 - graficos.html: canvas desenhado via JS e SVG estilizado pelo CSS. Controle de quantidade de pontos.
 - css/estilos.css: toda a estilização, Flexbox no menu e cartões, Grid no currículo e demais páginas; media queries min-width em 768 e 1024 px.
+- js/tema.js: restaura o tema antes do CSS para evitar clarões.
 - js/scripts.js: gráficos, tema e validação. Sem framework, bibliotecas ou serviço externo.
 
 ## Tema e privacidade

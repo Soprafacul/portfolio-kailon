@@ -16,21 +16,36 @@ function desenhar() {
 }
 if (canvas) { document.querySelector("#pontos").addEventListener("input", desenhar); desenhar(); }
 
-// Apenas a preferência visual é persistida. O site continua funcionando sem armazenamento.
+// A preferência visual é persistida; em arquivos locais também acompanha os links.
 const themeButton = document.querySelector(".theme");
 const THEME_KEY = "portfolio-jk-tema";
+function atualizarLinksTema(tema) {
+  if (location.protocol !== "file:") return;
+  document.querySelectorAll("a[href]").forEach(link => {
+    const original = link.getAttribute("href");
+    if (!original || original.startsWith("#")) return;
+    const url = new URL(original, document.baseURI);
+    if (url.protocol !== "file:" || !url.pathname.endsWith(".html")) return;
+    url.searchParams.set("tema", tema);
+    link.setAttribute("href", url.href);
+  });
+}
 function aplicarTema(tema) {
   const escuro = tema === "dark";
   document.documentElement.dataset.theme = escuro ? "dark" : "light";
   if (themeButton) { themeButton.textContent = escuro ? "Tema claro" : "Tema escuro"; themeButton.setAttribute("aria-pressed", String(escuro)); }
+  atualizarLinksTema(escuro ? "dark" : "light");
 }
-let salvo;
-try { salvo = localStorage.getItem(THEME_KEY); } catch (_) { /* Armazenamento indisponível: usar tema padrão. */ }
-aplicarTema(salvo === "dark" ? "dark" : "light");
+aplicarTema(document.documentElement.dataset.theme);
 if (themeButton) themeButton.addEventListener("click", () => {
   const tema = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   aplicarTema(tema);
-  try { localStorage.setItem(THEME_KEY, tema); } catch (_) { themeButton.title = "A preferência não pôde ser salva neste navegador."; }
+  if (location.protocol === "file:") {
+    const atual = new URL(location.href);
+    atual.searchParams.set("tema", tema);
+    try { history.replaceState(null, "", atual.href); } catch (_) { /* O tema ainda acompanha os links. */ }
+  }
+  try { localStorage.setItem(THEME_KEY, tema); } catch (_) { themeButton.title = "O tema acompanha a navegação; o navegador não permitiu salvar a preferência."; }
 });
 const form = document.querySelector("#contato");
 if (form) {
