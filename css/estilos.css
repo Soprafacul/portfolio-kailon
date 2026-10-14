@@ -34,3 +34,20 @@ canvas,.monogram { display:block; width:100%; height:auto; margin-top:20px; bord
 .embed { padding:24px; } .embed h1 { font-size:26px; } .embed li { padding:6px; } .embed p { margin:6px 0; }
 .skip { position:absolute; top:-100px; left:10px; background:var(--accent); padding:10px; z-index:10; } .skip:focus { top:10px; }
 #feedback:not(:empty) { padding:14px; border-left:4px solid var(--ink); background:var(--soft); }
+
+/* CP2: base mobile-first, Flexbox e Grid. */
+img,video,audio { max-width:100%; } img,video { height:auto; } audio { width:100%; }
+.header,nav,.actions,.cards { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.header { justify-content:space-between; } nav { width:100%; gap:4px; order:3; }
+.cards { align-items:stretch; } .cards article { flex:1 1 240px; margin:0; }
+.resume-grid,.contact-grid,.media-grid,.fields { display:grid; grid-template-columns:minmax(0,1fr); gap:20px; }
+.resume-grid>.panel,.contact-grid>.panel,.media-grid>.panel { margin:0; min-width:0; }
+.hero { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; }
+@media (min-width:768px) {
+ .hero { grid-template-columns:1.4fr 1fr; align-items:center; padding-block:70px; gap:55px; }
+ .resume-grid,.media-grid,.fields { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .contact-grid { grid-template-columns:minmax(0,1fr) minmax(0,1.7fr); align-items:start; }
+ .wide { grid-column:1 / -1; } .portrait { margin:0; }
+ .footer { display:flex; justify-content:space-between; gap:24px; }
+}
+@media (min-width:1024px) { nav { width:auto; order:0; } .wrap { width:calc(100% - 80px); } }
