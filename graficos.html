@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio acadêmico de José Kailon Teixeira da Silva, estudante de Análise e Desenvolvimento de Sistemas.">
+  <title>Gráficos | José Kailon</title>
+  <link rel="icon" href="img/avatar.svg" type="image/svg+xml">
+  <script src="js/tema.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/scripts.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="header wrap">
+    <a class="brand" href="index.html" aria-label="José Kailon, início">JK<span>José Kailon<br><small>Portfólio acadêmico</small></span></a>
+    <nav aria-label="Navegação principal"><a href="index.html">Início</a>
+<a href="curriculo.html">Currículo</a>
+<a href="formulario.html">Contato</a>
+<a href="multimidia.html">Multimídia</a>
+<a href="graficos.html" aria-current="page">Gráficos</a></nav>
+    <button class="theme" type="button" aria-pressed="false">Tema escuro</button>
+  </header>
+  <main id="conteudo" class="wrap"><section class="page-heading"><p class="eyebrow">04 / EXPERIMENTOS VISUAIS</p><h1>Código que desenha.</h1><p>Duas maneiras de construir elementos gráficos na web.</p></section><div class="media-grid"><section class="panel"><h2>Canvas · composição geométrica</h2><p>O JavaScript desenha linhas e círculos no canvas. Altere a quantidade de pontos para explorar a composição.</p><label for="pontos">Quantidade de pontos: <output id="quantidade" for="pontos">8</output></label><input type="range" id="pontos" min="3" max="16" value="8"><canvas id="arte" width="600" height="400" role="img" aria-label="Composição circular com oito pontos conectados">Composição geométrica desenhada via JavaScript.</canvas><noscript>Ative o JavaScript para desenhar a composição.</noscript></section><section class="panel"><h2>SVG · monograma vetorial</h2><p>Um desenho que mantém a nitidez em qualquer tamanho. As cores e o contorno são definidos no CSS externo.</p><svg class="monogram" viewBox="0 0 600 400" role="img" aria-labelledby="svg-title svg-desc"><title id="svg-title">Monograma JK</title><desc id="svg-desc">As iniciais JK dentro de um círculo, entre dois sinais de código.</desc><circle class="svg-circle" cx="300" cy="200" r="145"/><path class="svg-line" d="M150 160L110 200L150 240M450 160L490 200L450 240"/><text x="300" y="226" text-anchor="middle">JK</text></svg></section></div></main>
+  <footer class="wrap footer"><p>José Kailon Teixeira da Silva</p><p>Análise e Desenvolvimento de Sistemas · Portfólio acadêmico · 2026</p></footer>
+</body>
+</html>
