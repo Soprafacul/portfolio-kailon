@@ -1,0 +1,24 @@
+name: Importar histórico do portfólio
+on:
+  push:
+    paths:
+      - '.github/workflows/importar.yml'
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Integrar os cinco commits e a tag do CP3
+        run: |
+          git bundle verify Portfolio_CP3.bundle
+          git fetch ./Portfolio_CP3.bundle refs/heads/main:refs/heads/portfolio-original refs/tags/cp3-entrega:refs/tags/cp3-entrega
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git merge --allow-unrelated-histories --no-commit portfolio-original
+          git rm Portfolio_CP3.bundle .github/workflows/importar.yml
+          git commit -m 'Integrar as cinco etapas do portfólio para publicação'
+          git push --atomic origin HEAD:main refs/tags/cp3-entrega
